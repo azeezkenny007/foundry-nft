@@ -10,5 +10,9 @@ out/
 # Docs
 docs/
 
+# Code Constants
+src/CodeConstants.sol
+
+
 # Dotenv file
 .env

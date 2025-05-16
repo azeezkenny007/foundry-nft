@@ -8,15 +8,15 @@ import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract DeployMoodNft is Script, CodeConstants {
     function run() external returns (MoodNft) {
-       vm.startBroadcast();
-       MoodNft moodNft = new MoodNft(HAPPY_SVG_IMAGE_URI, SAD_SVG_IMAGE_URI);
-       vm.stopBroadcast();
-       return moodNft;
+        vm.startBroadcast();
+        MoodNft moodNft = new MoodNft(HAPPY_SVG_IMAGE_URI, SAD_SVG_IMAGE_URI);
+        vm.stopBroadcast();
+        return moodNft;
     }
 
-    function svgToImageUri(string memory svg) public pure returns(string memory){
+    function svgToImageUri(string memory svg) public pure returns (string memory) {
         string memory baseUrl = "data:image/svg+xml;base64,";
         string memory svgBase64Encoded = Base64.encode(bytes(string(abi.encodePacked(svg))));
-    
-}
+        return string(abi.encodePacked(baseUrl, svgBase64Encoded));
+    }
 }

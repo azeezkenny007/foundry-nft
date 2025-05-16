@@ -30,14 +30,13 @@ contract MoodNft is ERC721 {
     }
 
     function mintNft() public {
-   
         _safeMint(msg.sender, s_tokenCounter);
         s_tokenIdToMood[s_tokenCounter] = Mood.HAPPY;
         s_tokenCounter++;
     }
 
     function flipMood(uint256 tokenId) external {
-       if (getApproved(tokenId) != msg.sender && ownerOf(tokenId) != msg.sender) {
+        if (getApproved(tokenId) != msg.sender && ownerOf(tokenId) != msg.sender) {
             revert MoodNft__CantFlipMoodIfNotOwner();
         }
         if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {
@@ -46,7 +45,6 @@ contract MoodNft is ERC721 {
             s_tokenIdToMood[tokenId] = Mood.HAPPY;
         }
     }
-    
 
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         string memory imageURI;
