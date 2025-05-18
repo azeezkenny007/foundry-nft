@@ -37,6 +37,23 @@ deploy-Nft:
 		--broadcast \
 		-vvv
 
+
+
+deploy-MoodNft:
+	forge script script/DeployMoodNft.s.sol:DeployMoodNft \
+		--rpc-url $(SEPOLIA_RPC_URL) \
+		--account sepoliaWallet \
+		--verify \
+		--etherscan-api-key $(ETHERSCAN_API_KEY) \
+		--broadcast \
+		-vvv
+
+mint-MoodNft:
+	cast send 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 "mintNft()" --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) - -vvv
+
+flip-MoodNft:
+	cast send 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 "flipMood(uint256)" 0 --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) - -vvv
+
 mint-Nft:
 	forge script script/Interactions.s.sol:Interactions \
 		--rpc-url $(SEPOLIA_RPC_URL) \
