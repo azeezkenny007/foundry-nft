@@ -20,6 +20,7 @@ contract MoodNftIntegrationsTest is Test, CodeConstants {
         moodNft.mintNft();
         console.log(moodNft.tokenURI(0));
     }
+    
 
      function flipHappyMoodToSad() external{
         vm.prank(USER);
