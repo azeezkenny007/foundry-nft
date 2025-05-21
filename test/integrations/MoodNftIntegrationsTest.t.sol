@@ -15,13 +15,13 @@ contract MoodNftIntegrationsTest is Test, CodeConstants {
         moodNft = deployer.run();
     }
  
+ 
     function testNfttokenURIIntegration() external {
         vm.prank(USER);
         moodNft.mintNft();
         console.log(moodNft.tokenURI(0));
     }
     
-
 
      function flipHappyMoodToSad() external{
         vm.prank(USER);
